@@ -8,8 +8,8 @@ install:
 	yarn install
 
 test-keys:
-	LC_ALL=C find programs src -type f -exec sed -i '' -e "s/stkBL96RZkjY5ine4TvPihGqW8UHJfch2cokjAPzV8i/$$(solana-keygen pubkey ./target/deploy/cardinal_stake_pool-keypair.json)/g" {} +
-	LC_ALL=C find programs src -type f -exec sed -i '' -e "s/rwdNPNPS6zNvtF6FMvaxPRjzu2eC51mXaDT9rmWsojp/$$(solana-keygen pubkey ./target/deploy/cardinal_reward_distributor-keypair.json)/g" {} +
+	LC_ALL=C find programs src -type f -exec sed -i '' -e "s/7R4GT7nP8A42upBNcSv1CUz2tDrFE8oezuWX2PojTo8R/$$(solana-keygen pubkey ./target/deploy/cardinal_stake_pool-keypair.json)/g" {} +
+	LC_ALL=C find programs src -type f -exec sed -i '' -e "s/8qYb1jcU4Q9hAms5VtoU2QFRrX37UEYBduCi4EEtojz7/$$(solana-keygen pubkey ./target/deploy/cardinal_reward_distributor-keypair.json)/g" {} +
 
 build:
 	anchor build
@@ -30,8 +30,8 @@ test:
 	anchor test --skip-local-validator --skip-build --skip-deploy --provider.cluster localnet
 
 clean-test-keys:
-	LC_ALL=C find programs src -type f -exec sed -i '' -e "s/$$(solana-keygen pubkey ./target/deploy/cardinal_stake_pool-keypair.json)/stkBL96RZkjY5ine4TvPihGqW8UHJfch2cokjAPzV8i/g" {} +
-	LC_ALL=C find programs src -type f -exec sed -i '' -e "s/$$(solana-keygen pubkey ./target/deploy/cardinal_reward_distributor-keypair.json)/rwdNPNPS6zNvtF6FMvaxPRjzu2eC51mXaDT9rmWsojp/g" {} +
+	LC_ALL=C find programs src -type f -exec sed -i '' -e "s/$$(solana-keygen pubkey ./target/deploy/cardinal_stake_pool-keypair.json)/7R4GT7nP8A42upBNcSv1CUz2tDrFE8oezuWX2PojTo8R/g" {} +
+	LC_ALL=C find programs src -type f -exec sed -i '' -e "s/$$(solana-keygen pubkey ./target/deploy/cardinal_reward_distributor-keypair.json)/8qYb1jcU4Q9hAms5VtoU2QFRrX37UEYBduCi4EEtojz7/g" {} +
 
 stop:
 	pkill solana-test-validator
