@@ -16,15 +16,15 @@ build:
 	yarn idl:generate
 
 start:
-	solana-test-validator --url https://api.devnet.solana.com \
+	solana-test-validator --url https://api.devnet.solana.com --bind-address 0.0.0.0\
 		--clone metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s --clone PwDiXFxQsGra4sFFTT8r1QWRMd4vfumiWC1jfWNfdYT \
 		--clone mgr99QFMYByTqGPWmNqunV7vBLmWWXdSrHUfV8Jf3JM --clone ojLGErfqghuAqpJXE1dguXF7kKfvketCEeah8ig6GU3 \
 		--bpf-program ./target/deploy/cardinal_stake_pool-keypair.json ./target/deploy/cardinal_stake_pool.so \
 		--bpf-program ./target/deploy/cardinal_reward_distributor-keypair.json ./target/deploy/cardinal_reward_distributor.so \
 		--reset --quiet & echo $$!
-	sleep 10
+	sleep 30
 	solana-keygen pubkey ./tests/test-key.json
-	solana airdrop 1000 $(TEST_KEY) --url http://localhost:8899
+	solana airdrop 1000 $(TEST_KEY) --url localhost
 
 test:
 	anchor test --skip-local-validator --skip-build --skip-deploy --provider.cluster localnet
